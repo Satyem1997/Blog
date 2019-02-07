@@ -1,0 +1,28 @@
+<section class="section">
+    <div class="container">
+        <nav class="level">
+        	<div class="content">
+        		<% @posts.each do |i| %>
+        		<p><strong><%="Title is:" %><%= i.title %></strong><br/>
+        		<p><%= "Post is :" %><%= i.content %><br/>
+        			<div class="level-right">
+                		<%= link_to "Edit", edit_post_path(i), class:"button" %>
+              			                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                		<%= link_to "Delete", post_path(i), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger" %>
+                		
+          			</div>
+        		</p>
+        		</p>
+            	<%end%>
+        </div>
+    </nav>
+    </div>
+    </section>

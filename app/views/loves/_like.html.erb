@@ -1,0 +1,8 @@
+<% if @userlove.size==0 %>
+	<%= link_to "love", post_loves_path(@post), method: :post, remote: true %>
+                
+    <% else %>
+    <%= link_to "unlove", post_lofe_path(@post), method: :delete, remote: true %>
+<% end %>
+            
+    <%= @countlove %>&nbsp;&nbsp;<%= "loves" %>

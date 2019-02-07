@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DemoBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+
+  <div class="p-3 mb-2 bg-dark text-white">
+      <section class="hero is-primary is-medium">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <%= link_to 'All Posts', posts_path, class: "navbar-item" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to 'show my posts', mypost_path, class: "navbar-item" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to 'User Detail', userdetail_path, class: "navbar-item" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <%= link_to "Create New Post", new_post_path(), class: "navbar-item" %>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <%= link_to "Import File", products_path(), class: "navbar-item" %>
+
+                <% if user_signed_in?%>
+                  <div class="nav justify-content-end">
+                    <%= link_to "logout" , destroy_user_session_path, method: :delete , data: { confirm: "Are you sure?" }, class:"button is-danger" %>
+                </div>
+                <% else %>
+                  <%= link_to "SignUp", new_user_registration_path(), class: "navbar-item" %>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                
+                <%= link_to "Login", new_user_session_path(), class: "navbar-item" %>
+                <%end%>
+                  
+              
+              </div>
+            </div>
+            
+        </nav>
+      </div>
+      </div>
+
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title">
+            <% flash.each do |name, msg| %>
+            <div class='alert alert-<%= name%>' role="alert">
+              <%= msg%>
+            </div>
+            <%end%>
+            <%= yield :page_title %>
+          </h1>
+        </div>
+      </div>
+    </section>
+  </div>
+    <%= yield %>
+  </body>
+</html>

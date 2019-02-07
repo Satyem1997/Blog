@@ -1,0 +1,57 @@
+
+<% content_for :page_title, @post.title %>
+
+<section class="section">
+    <div class="container">
+        <nav class="level">
+          <!-- Left side -->
+          <div class="level-left">
+            <p class="level-item">
+                <strong></strong>
+            </p>
+          </div>
+          <!-- Right side -->
+        </nav>
+        <hr/>
+
+        <div class="content">
+            <strong>
+            <%= image_tag @post.image.url(:thumb) %>
+
+            <h2><%= @post.content %></h2>
+        </strong>
+        <div id="likeunlike">
+            <% if @userlove.size==0 %>
+            <%= link_to "love", post_loves_path(@post), method: :post, remote: true %>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            <% else %>
+            <%= link_to "unlove", post_lofe_path(@post), method: :delete, remote: true %>
+            <% end %>
+            
+            <%= @countlove %>&nbsp;&nbsp;<%= "loves" %>
+        </div>
+        </div>
+    </div>
+    </section>
+    <br/><br/>
+<section class="section comments">
+    <div class="container">
+        <h3 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+
+        <div id="comments-list" class="comments-list">
+            <% @post.comments.each do |comment| %>
+            
+            <%= render partial: "comments/comment", locals:{post: @post, comment: comment} %>
+            <% end %>
+        </div>
+        
+        <div class="comment-form", id="comment-form">
+            <hr />
+            <h4 class="subtitle is-3">Leave a comment</h4>
+                 <%= render :partial => 'comments/form', locals:{post: @post}%>
+        </div>
+    </div>
+</section>

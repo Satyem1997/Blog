@@ -1,0 +1,23 @@
+<div class="section">
+<%= simple_form_for @post, html: { multipart: true } do |f| %>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :image, input_html: { class: 'input' } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :title, input_html: { class: 'input' } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :content, input_html: { class: 'textarea' } %>
+    </div>
+  </div>
+  <%= f.button :submit, 'Create new post', class: "button is-primary" %>
+<% end %>
+</div>

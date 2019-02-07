@@ -1,0 +1,30 @@
+<div class="box" >
+  <article class="media">
+    <div class="media-content" id="comnew">
+      <div class="content" id="comment-<%=comment.id%>">
+        <p class="com">
+          <%= image_tag @post.image.url(:thumb) %>
+          <strong>
+            <%= comment.user.email %>
+          </strong>
+          <strong>
+            <%= ': :'  %>
+          </strong>
+          <%= comment.comment %>
+        </p>
+        <br/>
+      </div>
+    </div>
+    <div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <% if current_user.id == comment.user_id %>
+      <%= link_to 'Delete', [comment.post, comment], method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' },remote: true %>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'Edit ', edit_post_comment_path(@post, comment),remote: true, class: 'btn btn-xs btn-primary' %>
+      <% end %>
+   </div>
+
+  </article>
+</div>
+
+

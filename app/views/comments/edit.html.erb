@@ -1,0 +1,4 @@
+<div id= "comment-form">
+<% content_for :page_title, "Edit Comment" %>
+<%= render :partial => 'comments/editform', locals:{post: @post, comment: @comment}%>
+</div>
